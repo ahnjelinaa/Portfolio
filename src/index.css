@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-size: 18px; /* default untuk layar besar (desktop) */
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+/* HP */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+/* HP kecil banget */
+@media (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
+}

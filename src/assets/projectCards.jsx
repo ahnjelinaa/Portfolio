@@ -76,62 +76,40 @@ const ProjectModal = ({ project, onClose }) => {
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-md bg-black/60"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 backdrop-blur-md bg-black/60"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       onClick={onClose}
     >
       <motion.div
-        className="w-full max-w-4xl bg-white/95 backdrop-blur-xl rounded-xl shadow-2xl p-8 relative border border-gray-100"
-        initial={{ y: 50, scale: 0.9 }}
+        className="w-full max-w-5xl bg-white/95 backdrop-blur-xl rounded-xl shadow-2xl p-4 sm:p-6 lg:p-8 relative border border-gray-100"
+        initial={{ y: 50, scale: 0.95 }}
         animate={{ y: 0, scale: 1 }}
-        exit={{ y: 50, scale: 0.9 }}
+        exit={{ y: 50, scale: 0.95 }}
         transition={{ type: 'spring', stiffness: 100, damping: 20 }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Tombol Close */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-800 hover:text-pink-500 transition-colors p-2 rounded-full bg-white/70"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 text-gray-800 hover:text-pink-500 transition-colors p-2 rounded-full bg-white/70"
         >
-          <X size={24} />
+          <X size={22} className="sm:size-6" />
         </button>
 
-        {/* Header Title + Links */}
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-3xl font-extrabold text-gray-900">
-            {project.title} <span className="text-pink-500"></span>
+        {/* Header Title */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-4 mb-6">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
+            {project.title}
           </h1>
-          {/* <div className="flex gap-4">
-            {project.githubLink && (
-              <a
-                href={project.githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-gray-700 hover:text-pink-500 font-medium transition-colors"
-              >
-                <Github size={20} /> Code
-              </a>
-            )}
-            {project.liveLink && project.liveLink !== '#' && (
-              <a
-                href={project.liveLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-gray-700 hover:text-pink-500 font-medium transition-colors"
-              >
-                <ExternalLink size={20} /> Live Demo
-              </a>
-            )}
-          </div> */}
         </div>
 
         {/* Konten Grid */}
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Bagian Kiri: Gambar + Gallery */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
+          {/* Bagian Kiri */}
           <div className="flex flex-col gap-4">
-            <p className="text-sm text-gray-600 font-medium uppercase">
+            <p className="text-xs sm:text-sm text-gray-600 font-medium uppercase">
               {project.year} | {project.description}
             </p>
 
@@ -140,7 +118,7 @@ const ProjectModal = ({ project, onClose }) => {
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3 }}
-              className="p-2 bg-white rounded-lg shadow-inner h-72 flex items-center justify-center"
+              className="p-2 bg-white rounded-lg shadow-inner h-52 sm:h-64 lg:h-72 flex items-center justify-center"
             >
               <img
                 src={currentImage}
@@ -149,15 +127,15 @@ const ProjectModal = ({ project, onClose }) => {
               />
             </motion.div>
 
-            {/* Gallery Thumbnails */}
-            {project.galleryImages && project.galleryImages.length > 0 && (
-              <div className="flex gap-2 p-2 bg-gray-50 rounded-lg shadow-inner">
+            {/* Gallery */}
+            {project.galleryImages && (
+              <div className="flex flex-wrap gap-2 p-2 bg-gray-50 rounded-lg shadow-inner">
                 {project.galleryImages.map((imgSrc, index) => (
                   <img
                     key={index}
                     src={imgSrc}
                     alt={`Thumbnail ${index + 1}`}
-                    className={`w-20 h-16 object-cover rounded-md cursor-pointer border-2 
+                    className={`w-16 h-12 sm:w-20 sm:h-16 object-cover rounded-md cursor-pointer border-2 
                       ${currentImage === imgSrc ? 'border-pink-500 shadow-md' : 'border-transparent opacity-70 hover:opacity-100'}
                       transition-all duration-200`}
                     onClick={() => setCurrentImage(imgSrc)}
@@ -167,20 +145,20 @@ const ProjectModal = ({ project, onClose }) => {
             )}
           </div>
 
-          {/* Bagian Kanan: Detail */}
+          {/* Bagian Kanan */}
           <div className="space-y-6">
-            <div className="space-y-2">
-              <h4 className="text-xl font-bold text-gray-800 border-b pb-1">Description</h4>
-              <p className="text-gray-700 text-sm">{project.longDescription}</p>
+            <div>
+              <h4 className="text-lg sm:text-xl font-bold text-gray-800 border-b pb-1">Description</h4>
+              <p className="text-gray-700 text-sm sm:text-base mt-2">{project.longDescription}</p>
             </div>
 
-            <div className="space-y-2">
-              <h4 className="text-xl font-bold text-gray-800 border-b pb-1">Technologies</h4>
-              <div className="flex flex-wrap gap-2">
+            <div>
+              <h4 className="text-lg sm:text-xl font-bold text-gray-800 border-b pb-1">Technologies</h4>
+              <div className="flex flex-wrap gap-2 mt-2">
                 {project.tech.map((tech, i) => (
                   <span
                     key={i}
-                    className="bg-pink-100 text-pink-700 text-xs font-semibold px-3 py-1 rounded-full"
+                    className="bg-pink-100 text-pink-700 text-xs sm:text-sm font-semibold px-2 sm:px-3 py-1 rounded-full"
                   >
                     {tech}
                   </span>
@@ -188,38 +166,28 @@ const ProjectModal = ({ project, onClose }) => {
               </div>
             </div>
 
-            {/* <div className="space-y-2">
-              <h4 className="text-xl font-bold text-gray-800 border-b pb-1">Contributors</h4>
-              <ul className="list-disc list-inside text-gray-700 text-sm">
-                {project.contributors.map((name, i) => (
-                  <li key={i}>{name}</li>
-                ))}
-              </ul>
-            </div> */}
-
-            <div className="flex gap-4">
-            {project.githubLink && (
-              <a
-                href={project.githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-gray-700 hover:text-pink-500 font-medium transition-colors"
-              >
-                <Github size={20} /> Code
-              </a>
-            )}
-            {project.liveLink && project.liveLink !== '#' && (
-              <a
-                href={project.liveLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-gray-700 hover:text-pink-500 font-medium transition-colors"
-              >
-                <ExternalLink size={20} /> Live Demo
-              </a>
-            )}
-          </div>
-
+            <div className="flex gap-4 mt-4">
+              {project.githubLink && (
+                <a
+                  href={project.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm sm:text-base text-gray-700 hover:text-pink-500 font-medium transition-colors"
+                >
+                  <Github size={18} className="sm:size-5" /> Code
+                </a>
+              )}
+              {project.liveLink && project.liveLink !== '#' && (
+                <a
+                  href={project.liveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm sm:text-base text-gray-700 hover:text-pink-500 font-medium transition-colors"
+                >
+                  <ExternalLink size={18} className="sm:size-5" /> Live Demo
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </motion.div>
@@ -244,41 +212,42 @@ const ProjectCards = () => {
   };
 
   return (
-    <section id="projects" className="pb-15 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="flex flex-col items-center mb-16">
-          <h2 className="text-4xl font-extrabold text-gray-900 mb-2 text-center relative">
+    <section id="projects" className="pb-12 bg-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        {/* Header */}
+        <div className="flex flex-col items-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-2 text-center">
             Projects
-            <span className="absolute top-[-10px] right-[-30px] text-pink-500 text-3xl"></span>
           </h2>
-          <div className="w-24 h-1 mx-auto bg-gradient-to-r from-[#ffd1dc] to-pink-400 rounded-full"></div>
+          <div className="w-16 sm:w-24 h-1 mx-auto bg-gradient-to-r from-[#ffd1dc] to-pink-400 rounded-full"></div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-10">
+        {/* Grid Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
           {projects.map((project) => (
             <div
-          key={project.id}
-          onClick={() => handleCardClick(project)}
-          className="group flex flex-col items-center text-center p-6 transition-all duration-300 transform hover:scale-[1.03] cursor-pointer"
-        >
-          <h3 className="text-2xl font-bold text-gray-800 group-hover:text-pink-500">
-            {project.title}
-          </h3>
+              key={project.id}
+              onClick={() => handleCardClick(project)}
+              className="group flex flex-col items-center text-center p-4 sm:p-6 transition-all duration-300 transform hover:scale-[1.03] cursor-pointer"
+            >
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-800 group-hover:text-pink-500">
+                {project.title}
+              </h3>
 
-  {/* Description dengan fixed height */}
-          <div className="min-h-[40px] mt-2 mb-6 flex items-center">
-            <p className="text-sm text-gray-600">{project.description}</p>
-          </div>
+              {/* Description */}
+              <div className="min-h-[36px] sm:min-h-[40px] mt-2 mb-4 sm:mb-6 flex items-center">
+                <p className="text-xs sm:text-sm text-gray-600">{project.description}</p>
+              </div>
 
-          {/* Gambar */}
-          <div className="relative w-full h-auto p-4 bg-white rounded-xl shadow-xl border border-gray-100">
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-auto rounded-lg object-contain"
-            />
-          </div>
-        </div>
+              {/* Image */}
+              <div className="relative w-full h-auto p-3 sm:p-4 bg-white rounded-xl shadow-xl border border-gray-100">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-auto rounded-lg object-contain"
+                />
+              </div>
+            </div>
           ))}
         </div>
       </div>

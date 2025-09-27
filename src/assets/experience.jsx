@@ -1,11 +1,11 @@
+// PortfolioPage.jsx
 import { React, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // --- ICONS (SVG) ---
-// Menggunakan SVG langsung agar tidak perlu install library ikon
 const CalendarIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1.5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2 2v12a2 2 0 002 2z" />
   </svg>
 );
 
@@ -17,29 +17,27 @@ const LocationIcon = () => (
 );
 
 const BuildingIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-    </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 md:h-8 md:w-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+  </svg>
 );
 
 // Icon untuk tombol "Show More"
 const ChevronDownIcon = ({ isOpen }) => (
-    <motion.svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-5 w-5 ml-1"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        animate={{ rotate: isOpen ? 180 : 0 }}
-        transition={{ duration: 0.3 }}
-    >
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-    </motion.svg>
+  <motion.svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="h-5 w-5 ml-1"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    animate={{ rotate: isOpen ? 180 : 0 }}
+    transition={{ duration: 0.3 }}
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+  </motion.svg>
 );
 
-
-// --- 1. DATA DIPERBARUI UNTUK UI BARU ---
-// Menambahkan properti 'description'
+// --- DATA ---
 const journeyData = [
   {
     title: "Information Systems Case Study Club Member (ISCSC)",
@@ -154,42 +152,44 @@ const journeyData = [
   },
 ];
 
-// --- 2. KOMPONEN BARU UNTUK SETIAP ITEM DI TIMELINE ---
+// --- ITEM COMPONENT ---
 const JourneyItem = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="relative pl-16">
-      {/* Lingkaran di timeline */}
-      <div className="absolute left-[26px] top-1 h-3 w-3 rounded-full bg-pink-400 border-4 border-pink-300"></div>
-      
-      {/* Card Konten */}
-      <div className="mb-8 rounded-lg border border-gray-200/80 bg-white p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
-        <div className="flex items-center justify-between">
+    <div className="relative pl-12 sm:pl-16">
+      {/* Lingkaran timeline */}
+      <div className="absolute left-[22px] sm:left-[26px] top-1 h-3 w-3 rounded-full bg-pink-400 border-4 border-pink-300"></div>
+
+      {/* Card */}
+      <div className="mb-8 rounded-lg border border-gray-200 bg-white p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between">
           <div className="flex items-start">
-            <div className="flex-shrink-0 mr-5 mt-1">
-                <BuildingIcon />
+            <div className="flex-shrink-0 mr-4 mt-1">
+              <BuildingIcon />
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
-              <p className="text-md text-gray-600">{item.company}</p>
-              
-              {/* BARIS KODE BARU UNTUK DESKRIPSI (TAMPILKAN HANYA JIKA ADA) */}
-              {item.description && (
-                <p className="mt-1 text-sm text-gray-500 max-w-xl">{item.description}</p>
-              )}
-              {/* AKHIR BARIS KODE BARU */}
+              <h3 className="text-base sm:text-lg font-semibold text-gray-800">{item.title}</h3>
+              <p className="text-sm sm:text-md text-gray-600">{item.company}</p>
 
-              <div className="mt-2 flex flex-wrap items-center text-sm text-gray-500">
-                <span className="flex items-center mr-4 mb-1"><CalendarIcon /> {item.dateRange}</span>
-                <span className="flex items-center mr-4 mb-1"><LocationIcon /> {item.location}</span>
-                <span className="inline-block rounded-md bg-pink-200 px-2 py-1 text-xs font-medium text-pink-700 border border-pink-500">{item.category}</span>
+              {item.description && (
+                <p className="mt-1 text-xs sm:text-sm text-gray-500 max-w-xl">{item.description}</p>
+              )}
+
+              <div className="mt-2 flex flex-wrap items-center text-xs sm:text-sm text-gray-500">
+                <span className="flex items-center mr-3 mb-1"><CalendarIcon /> {item.dateRange}</span>
+                <span className="flex items-center mr-3 mb-1"><LocationIcon /> {item.location}</span>
+                <span className="inline-block rounded-md bg-pink-200 px-2 py-0.5 text-xs font-medium text-pink-700 border border-pink-500">{item.category}</span>
               </div>
             </div>
           </div>
-          {/* Tombol Dropdown hanya muncul jika ada gambar */}
+
+          {/* Toggle Button */}
           {item.images && item.images.length > 0 && (
-            <button onClick={() => setIsOpen(!isOpen)} className="p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-300">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="self-end mt-2 sm:mt-0 p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-300"
+            >
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5 text-gray-500"
@@ -205,17 +205,17 @@ const JourneyItem = ({ item }) => {
           )}
         </div>
 
-        {/* Galeri Gambar (muncul saat dropdown diklik) */}
+        {/* Gambar Dropdown */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{ height: 0, opacity: 0, marginTop: 0 }}
-              animate={{ height: 'auto', opacity: 1, marginTop: '20px' }}
-              exit={{ height: 0, opacity: 0, marginTop: 0 }}
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="overflow-hidden"
+              className="overflow-hidden mt-4"
             >
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {item.images.map((img, index) => (
                   <img key={index} src={img} alt={`${item.title} gallery ${index + 1}`} className="rounded-md w-full h-auto object-cover" />
                 ))}
@@ -228,108 +228,83 @@ const JourneyItem = ({ item }) => {
   );
 };
 
-// --- 3. KOMPONEN UTAMA ---
+// --- MAIN COMPONENT ---
 function PortfolioPage() {
   const filters = ["Experience", "Education", "Certification"];
   const [activeFilter, setActiveFilter] = useState("Experience");
-  // State untuk mengontrol tampilan item tersembunyi
-  const [showAll, setShowAll] = useState(false); 
-  
-  // Batas item yang akan ditampilkan secara default
-  const ITEM_LIMIT = 3; 
+  const [showAll, setShowAll] = useState(false);
 
-  const filteredData = journeyData.filter(
-    (item) => item.category === activeFilter
-  );
-
-  // Membagi data menjadi yang terlihat dan tersembunyi
+  const ITEM_LIMIT = 3;
+  const filteredData = journeyData.filter((item) => item.category === activeFilter);
   const visibleData = filteredData.slice(0, ITEM_LIMIT);
   const hiddenData = filteredData.slice(ITEM_LIMIT);
-  
-  // Data yang akan dirender (tampilkan semua jika showAll=true, jika tidak, hanya visibleData)
   const dataToRender = showAll ? filteredData : visibleData;
-  
-  // Menentukan teks tombol
-  const buttonText = showAll 
-    ? `Show Less (${filteredData.length} items)` 
-    : `Show All Experiences (${hiddenData.length} more)`;
+  const buttonText = showAll
+    ? `Show Less (${filteredData.length} items)`
+    : `Show All (${hiddenData.length} more)`;
 
   return (
     <div className="portfolio-container">
-      <style>{`
-        // @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-      `}</style>
-      
-      <div className="max-w-3xl mx-auto pt-20 px-4">
+      <div className="max-w-3xl mx-auto pt-16 px-4 sm:px-6">
         {/* Header */}
-        <div className="text-center mb-12">
-            <h2 className="text-4xl font-extrabold text-gray-900 mb-2 text-center relative">
-            Experiences and Education
-            <span className="absolute top-[-10px] right-[-30px] text-pink-500 text-3xl"></span>
-          </h2>
-          <div className="w-24 h-1 mx-auto bg-gradient-to-r from-[#ffd1dc] to-pink-400 rounded-full"></div>
-            {/* <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-600">My professional journey and the roles that have shaped my career.</p> */}
+        <div className="text-center mb-10">
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-gray-900 mb-2">Experiences and Education</h2>
+          <div className="w-20 sm:w-24 h-1 mx-auto bg-gradient-to-r from-[#ffd1dc] to-pink-400 rounded-full"></div>
         </div>
 
-        {/* Tombol Filter */}
-        <div className="flex justify-center mb-12">
-            <div className="flex space-x-2 rounded-3xl bg-gray-200 p-1.5">
-                {filters.map((filter) => (
-                    <button
-                        key={filter}
-                        onClick={() => {
-                            setActiveFilter(filter);
-                            setShowAll(false); // Reset dropdown saat filter ganti
-                        }}
-                        className={`px-4 py-1.5 rounded-2xl text-sm font-medium transition-colors
-                        ${activeFilter === filter
-                            ? "bg-pink-400 text-white shadow-sm"
-                            : "text-gray-700 hover:text-gray-700"
-                        }`}
-                    >
-                        {filter}
-                    </button>
-                ))}
-            </div>
+        {/* Filter */}
+        <div className="flex justify-center mb-10">
+          <div className="flex space-x-2 rounded-3xl bg-gray-200 p-1">
+            {filters.map((filter) => (
+              <button
+                key={filter}
+                onClick={() => { setActiveFilter(filter); setShowAll(false); }}
+                className={`px-3 sm:px-4 py-1 sm:py-1.5 rounded-2xl text-xs sm:text-sm font-medium transition-colors
+                ${activeFilter === filter
+                  ? "bg-pink-400 text-white shadow-sm"
+                  : "text-gray-700 hover:text-gray-900"
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Timeline Container */}
+        {/* Timeline */}
         <div className="relative">
-            {/* Garis Vertikal Timeline */}
-            <div className="absolute left-7 top-1 bottom-0 w-0.5 bg-gray-200"></div>
-            
-            {dataToRender.length > 0 ? (
-                // Menggunakan AnimatePresence dan motion.div agar item yang baru muncul memiliki animasi
-                <AnimatePresence initial={false}>
-                    {dataToRender.map((item, index) => (
-                        <motion.div
-                            key={item.title} // Penting menggunakan key yang unik dan stabil
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.3, delay: (index >= ITEM_LIMIT && !showAll) ? 0 : 0.05 * (index - ITEM_LIMIT) }}
-                        >
-                            <JourneyItem item={item} />
-                        </motion.div>
-                    ))}
-                </AnimatePresence>
-            ) : (
-                <p className="text-center text-gray-500">No items in this category.</p>
-            )}
-        </div>
-        
-        {/* --- TOMBOL SHOW MORE/LESS BARU --- */}
-        {hiddenData.length > 0 && (
-            <div className="flex justify-center mt-6">
-                <button
-                    onClick={() => setShowAll(!showAll)}
-                    className="flex items-center justify-center px-6 py-2 border border-pink-400 rounded-full text-pink-600 font-medium hover:bg-pink-50 transition-colors"
+          <div className="absolute left-6 sm:left-7 top-1 bottom-0 w-0.5 bg-gray-200"></div>
+
+          {dataToRender.length > 0 ? (
+            <AnimatePresence initial={false}>
+              {dataToRender.map((item, index) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3, delay: 0.05 * index }}
                 >
-                    {buttonText}
-                    <ChevronDownIcon isOpen={showAll} />
-                </button>
-            </div>
+                  <JourneyItem item={item} />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          ) : (
+            <p className="text-center text-gray-500">No items in this category.</p>
+          )}
+        </div>
+
+        {/* Show More */}
+        {hiddenData.length > 0 && (
+          <div className="flex justify-center mt-6">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="flex items-center justify-center px-4 sm:px-6 py-2 border border-pink-400 rounded-full text-sm sm:text-base text-pink-600 font-medium hover:bg-pink-50 transition-colors"
+            >
+              {buttonText}
+              <ChevronDownIcon isOpen={showAll} />
+            </button>
+          </div>
         )}
       </div>
     </div>
