@@ -14,6 +14,8 @@ const Navbar = ({ onNavigate }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const menuItems = ['home', 'about', 'projects', 'activities', 'contact'];
+
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -33,19 +35,19 @@ const Navbar = ({ onNavigate }) => {
 
           {/* Menu Tengah (Desktop) */}
           <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:flex space-x-8">
-            {['Home', 'About', 'Projects', 'Contact'].map((item) => (
+            {menuItems.map((item) => (
               <button
                 key={item}
-                onClick={() => onNavigate(item.toLowerCase())}
+                onClick={() => onNavigate(item)}
                 className="text-gray-700 hover:text-[#ffd1dc] transition-colors duration-200 font-medium"
               >
-                {item}
+                {item.charAt(0).toUpperCase() + item.slice(1)}
               </button>
             ))}
           </div>
 
           {/* Typewriter (Desktop Only) */}
-          <div className="z-10 hidden md:flex text-pink-400 font-semibold text-sm">
+          <div className="z-10 hidden md:flex text-pink-400 font-semibold text-lg">
             <Typewriter
               words={['Hello!', 'Halo!', '안녕하세요!', 'Bonjour!', 'こんにちは!', '你好!']}
               loop={true}
@@ -71,16 +73,16 @@ const Navbar = ({ onNavigate }) => {
         {/* Mobile Menu Dropdown */}
         {isMenuOpen && (
           <div className="mt-4 flex flex-col space-y-4 md:hidden text-center">
-            {['Home', 'About', 'Projects', 'Contact'].map((item) => (
+            {menuItems.map((item) => (
               <button
                 key={item}
                 onClick={() => {
-                  onNavigate(item.toLowerCase());
-                  setIsMenuOpen(false); // close menu setelah klik
+                  onNavigate(item);
+                  setIsMenuOpen(false); // tutup menu setelah klik
                 }}
                 className="text-gray-700 hover:text-[#ffd1dc] transition-colors duration-200 font-medium"
               >
-                {item}
+                {item.charAt(0).toUpperCase() + item.slice(1)}
               </button>
             ))}
           </div>

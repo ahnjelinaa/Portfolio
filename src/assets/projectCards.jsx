@@ -212,12 +212,12 @@ const ProjectCards = () => {
   };
 
   return (
-    <section id="projects" className="pb-12 bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <section id="projects" className="pb-20 bg-white">
+      <div className="max-w-6xl mx-auto pb-10 px-4 sm:px-6">
         {/* Header */}
         <div className="flex flex-col items-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-2 text-center">
-            Projects
+            Featured Projects
           </h2>
           <div className="w-16 sm:w-24 h-1 mx-auto bg-gradient-to-r from-[#ffd1dc] to-pink-400 rounded-full"></div>
         </div>

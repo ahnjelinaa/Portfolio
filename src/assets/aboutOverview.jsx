@@ -57,7 +57,7 @@ const AboutOverview = () => {
         {/* INTRO */}
         <p className="text-sm sm:text-base lg:text-lg text-gray-700 mb-8 sm:mb-12 text-center max-w-3xl mx-auto px-2">
           <span className="font-bold text-xl sm:text-2xl lg:text-3xl text-pink-400 mb-4 animate-bounce">Hello! </span>  
-          I'm a second year <span className="font-semibold text-gray-900">Information Systems</span> undergraduate student majoring in <span className="font-semibold text-gray-900">Applied Database</span>. 
+          I'm a third year <span className="font-semibold text-gray-900">Information Systems</span> undergraduate student majoring in <span className="font-semibold text-gray-900">Applied Database</span>. 
           I'm deeply interested in <span className="font-semibold text-gray-900">business analytics</span>, <span className="font-semibold text-gray-900">data analytics</span>, and <span className="font-semibold text-gray-900">UI/UX design</span>. 
           I enjoy exploring the intersection of technology and problem-solving.
         </p>

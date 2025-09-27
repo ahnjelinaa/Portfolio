@@ -5,6 +5,7 @@ import ProjectCards from '../assets/projectCards.jsx';
 import AboutOverview from '../assets/aboutOverview.jsx';
 import Footer from '../assets/footer.jsx';
 import profileImg from '/assets/profilePhoto.png';
+import Activities from '../assets/activity.jsx';
 
 const Portfolio = () => {
   const scrollToSection = (sectionId) => {
@@ -93,8 +94,13 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* CONTACT */}
-      <section id="contact">{/* <Contact /> */}</section>
+      {/* ACTIVITIES */}
+      <section id="activities">{/* <Activity /> */}</section>
+
+      {/* ACTIVITIES */}
+      <section id="contact">{/* <Contact /> */}
+        <Activities />
+      </section>
 
       {/* FOOTER */}
       <section>
