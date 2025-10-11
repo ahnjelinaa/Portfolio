@@ -6,6 +6,7 @@ import AboutOverview from '../assets/aboutOverview.jsx';
 import Footer from '../assets/footer.jsx';
 import profileImg from '/assets/profilePhoto.png';
 import Activities from '../assets/activity.jsx';
+import Scroller from '../assets/scroller.jsx'; 
 
 const Portfolio = () => {
   const scrollToSection = (sectionId) => {
@@ -39,13 +40,15 @@ const Portfolio = () => {
                 BINUS @Alam Sutera Part Time Software Lab Assistant
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <button
-                  onClick={() => scrollToSection('contact')}
+                <a
+                  href="/src/assets/cv/CV_AngelinaOktavianiPutri.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-gradient-to-r from-[#ffd1dc] to-pink-300 text-white px-5 sm:px-7 lg:px-8 py-2.5 sm:py-3 lg:py-4 rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all duration-200 flex items-center justify-center gap-2 text-sm sm:text-base lg:text-lg"
-                >
+                  >
                   <Download size={18} className="sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
                   Download CV
-                </button>
+                </a>
               </div>
             </div>
 
@@ -94,17 +97,30 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* ACTIVITIES */}
-      <section id="activities">{/* <Activity /> */}</section>
+      {/* SCROLLER */}
+      {/* <section>
+        <Scroller />
+      </section> */}
 
       {/* ACTIVITIES */}
-      <section id="contact">{/* <Contact /> */}
+      <section id="activities">{/* <Activity /> */}
         <Activities />
+      </section>
+
+      {/* SCROLLER */}
+      {/* <section>
+        <Scroller />
+      </section> */}
+
+      {/* CONTACT */}
+      <section id="contact">{/* <Contact /> */}
+        {/* <Activities /> */}
+        <Footer />
       </section>
 
       {/* FOOTER */}
       <section>
-        <Footer />
+        {/* <Footer /> */}
       </section>
 
       {/* Animations */}

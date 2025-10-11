@@ -27,7 +27,20 @@ const activities = [
     image: "/assets/activities/appreciationDay1.png",
     galleryImages: [
       "/assets/activities/appreciationDay1.png",
-      "/assets/activities/appreciationDay2.png"
+      "/assets/activities/appreciationDay2.png", 
+      "/assets/activities/appreciationDay3.JPEG"
+    ]
+  }, 
+  {
+    id: 3,
+    year: "2025",
+    title: "Best Project for Web Development in ISPM",
+    description: "Best Information Systems Project Member Project in Web Development 2025",
+    longDescription: "Awarded Best Project in Web Development for creating an internal automailer website for the Information Systems Laboratory. Served as UI/UX Designer and Frontend Developer, focusing on intuitive interface design and seamless user experience.",
+    image: "/assets/experiences/ispm1.png",
+    galleryImages: [
+      "/assets/experiences/ispm1.png",
+      "/assets/activities/bestprojectispm1.png"
     ]
   }
 ];
@@ -162,7 +175,7 @@ const Activities = () => {
             <div
               key={activity.id}
               onClick={() => handleCardClick(activity)}
-              className="group flex flex-col items-center text-center p-4 sm:p-6 transition-all duration-300 transform hover:scale-[1.03] cursor-pointer"
+              className= "group flex flex-col items-center text-center p-4 sm:p-6 transition-all duration-300 transform hover:scale-[1.03] cursor-pointer border border-gray-200 rounded-xl shadow-sm hover:shadow-md bg-white"
             >
               <h3 className="text-xl sm:text-2xl font-bold text-gray-800 group-hover:text-pink-500">
                 {activity.title}

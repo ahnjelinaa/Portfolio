@@ -1,6 +1,8 @@
 // PortfolioPage.jsx
 import { React, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 
 // --- ICONS (SVG) ---
 const CalendarIcon = () => (
@@ -42,113 +44,83 @@ const journeyData = [
   {
     title: "Information Systems Case Study Club Member (ISCSC)",
     company: "Bina Nusantara University",
-    // Tambahkan deskripsi di sini
     description: "Weekly training for competitions, developing skills in problem-solving, business analysis, design thinking, and data-driven decision-making.",
     dateRange: "January 2025 - Present",
     location: "Banten, Indonesia",
     category: "Experience",
-    images: [
-      "/assets/experiences/iscsc1.JPG",
-      "/assets/experiences/iscsc2.jpg",
-      "/assets/experiences/iscsc3.jpg"
-    ],
+    images: ["/assets/experiences/iscsc1.JPG", "/assets/experiences/iscsc2.jpg", "/assets/experiences/iscsc3.jpg"],
   },
   {
     title: "Information Systems Project Member (ISPM)",
     company: "Bina Nusantara University",
-    // Tambahkan deskripsi di sini
     description: "Weekly training in web programming to strengthen frontend and backend development skills, while also conducting research and writing related papers.",
     dateRange: "January 2025 - Present",
     location: "Banten, Indonesia",
     category: "Experience",
-    images: [
-      "/assets/experiences/ispm1.png",
-      "/assets/experiences/ispm2.png",
-    ],
+    images: ["/assets/experiences/ispm1.png", "/assets/experiences/ispm2.png"],
   },
   {
     title: "Software Laboratory Center Part-Time Lab Assistant",
     company: "Bina Nusantara University",
-    // Tambahkan deskripsi di sini
     description: "Handles five classes weekly, with responsibilities including corrections, case creation, exam proctoring, and providing hands-on guidance in programming labs.",
     dateRange: "September 2024 - Present",
     location: "Banten, Indonesia",
     category: "Experience",
-    images: [
-      "/assets/experiences/aslab1.png",
-      "/assets/experiences/aslab2.png"
-    ],
+    images: ["/assets/experiences/aslab1.png", "/assets/experiences/aslab2.png"],
   },
   {
     title: "Scholarship Mentor",
     company: "Bina Nusantara University",
-    // Tambahkan deskripsi di sini
     description: "Conducted weekly mentoring for 5 students, supporting coursework, projects, and academic development. Earned a 16-credit scholarship for mentoring excellence in courses including Business Application Development, Database, Digital Innovation, and UX Design.",
     dateRange: "January 2025 - Present",
     location: "Banten, Indonesia",
     category: "Experience",
-    images: [
-    ],
+    images: [],
   },
   {
     title: "Freshmen Leader @FYPB2029",
     company: "Bina Nusantara University",
-    // Tambahkan deskripsi di sini
-    description: "Mentored 5 freshmen directly and facilitated sessions for 60 students, fostering adaptability, teamwork, and smooth adjustment to university life. Collaborated with fellow leaders to deliver orientation activities, support access to resources, and create a welcoming first-year experience.",
+    description: "Mentored 5 freshmen directly and facilitated sessions for 60 students, fostering adaptability, teamwork, and smooth adjustment to university life.",
     dateRange: "August 2025 - September 2025",
     location: "Banten, Indonesia",
     category: "Experience",
-    images: [
-      "/assets/experiences/fl1.png",
-      "/assets/experiences/fl2.png",
-    ],
+    images: ["/assets/experiences/fl1.png", "/assets/experiences/fl2.png"],
   },
   {
     title: "Scholarship Tutor",
     company: "Bina Nusantara University",
-    // Tambahkan deskripsi di sini
-    description: "Led weekly Python tutoring for first-semester Information Systems students, emphasizing programming fundamentals and problem-solving. Supported learning through coding guidance and earned a 16-credit scholarship for academic contributions.",
+    description: "Led weekly Python tutoring for first-semester Information Systems students, emphasizing programming fundamentals and problem-solving.",
     dateRange: "September 2024 - January 2025",
     location: "Banten, Indonesia",
     category: "Experience",
-    images: [
-    ],
+    images: ["/assets/experiences/tutor1.png"],
   },
   {
     title: "Bachelor of Information Systems",
     company: "Bina Nusantara University",
-    // Tambahkan deskripsi di sini
-    description: "Bachelor of Information Systems at Bina Nusantara University with a specialization in Database. Focused on database design and management, with broader knowledge in systems analysis, IT infrastructure, and data-driven decision-making.",
+    description: "Bachelor of Information Systems at Bina Nusantara University with a specialization in Database.",
     dateRange: "2023 - 2027",
     location: "Banten, Indonesia",
     category: "Education",
-    images: [
-    ],
+    images: [],
   },
   {
     title: "Microsoft Certified: Azure AI Fundamentals",
     company: "Microsoft",
-    // Kosongkan deskripsi untuk sertifikasi jika tidak diperlukan
-    description: "", 
+    description: "",
     dateRange: "Issued March 2025",
     location: "Indonesia",
     category: "Certification",
-    images: [
-      "/assets/certifications/azureai2.png",
-      "/assets/certifications/azureai1.png"
-    ], 
+    images: ["/assets/certifications/azureai2.png", "/assets/certifications/azureai1.png"],
   },
   {
     title: "Database Design and Oracle Database",
     company: "Oracle",
-    // Kosongkan deskripsi untuk sertifikasi jika tidak diperlukan
-    description: "", 
+    description: "",
     dateRange: "Issued September 2025",
     location: "Indonesia",
     category: "Certification",
-    images: [
-      "/assets/certifications/oracle1.png"
-    ], 
+    images: ["/assets/certifications/oracle1.png"],
   },
 ];
 
@@ -158,10 +130,8 @@ const JourneyItem = ({ item }) => {
 
   return (
     <div className="relative pl-12 sm:pl-16">
-      {/* Lingkaran timeline */}
       <div className="absolute left-[22px] sm:left-[26px] top-1 h-3 w-3 rounded-full bg-pink-400 border-4 border-pink-300"></div>
 
-      {/* Card */}
       <div className="mb-8 rounded-lg border border-gray-200 bg-white p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between">
           <div className="flex items-start">
@@ -184,7 +154,6 @@ const JourneyItem = ({ item }) => {
             </div>
           </div>
 
-          {/* Toggle Button */}
           {item.images && item.images.length > 0 && (
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -205,12 +174,11 @@ const JourneyItem = ({ item }) => {
           )}
         </div>
 
-        {/* Gambar Dropdown */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
               initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
+              animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
               className="overflow-hidden mt-4"
@@ -246,7 +214,6 @@ function PortfolioPage() {
   return (
     <div className="portfolio-container">
       <div className="max-w-3xl mx-auto pt-16 px-4 sm:px-6">
-        {/* Header */}
         <div className="text-center mb-10">
           <h2 className="text-2xl sm:text-4xl font-extrabold text-gray-900 mb-2">Experiences and Education</h2>
           <div className="w-20 sm:w-24 h-1 mx-auto bg-gradient-to-r from-[#ffd1dc] to-pink-400 rounded-full"></div>
@@ -306,6 +273,27 @@ function PortfolioPage() {
             </button>
           </div>
         )}
+
+        {/* 🌸 View Other Certificates Button */}
+        <AnimatePresence>
+          {activeFilter === "Certification" && (
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 15 }}
+              transition={{ duration: 0.4 }}
+              className="flex justify-center mt-6"
+            >
+              {/* <Link
+              to="/certificates" // arahkan ke halaman Certificates kamu
+              className="flex items-center justify-center px-4 sm:px-6 py-2 border border-pink-400 rounded-full text-sm sm:text-base text-pink-600 font-medium hover:bg-pink-50 transition-colors"
+            >
+              View Certificates
+              <ArrowRight className="ml-2 w-4 h-4" />
+            </Link> */}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );

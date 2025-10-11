@@ -4,7 +4,7 @@ import { ExternalLink } from 'lucide-react';
 const Footer = () => {
   return (
     <footer className="pb-12 px-4 sm:px-6 lg:px-8 text-gray-800">
-      <div className="max-w-6xl mx-auto rounded-3xl bg-white shadow-lg px-6 sm:px-10 py-10 sm:py-12 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div className="max-w-6xl mx-auto rounded-3xl bg-white shadow-lg px-6 sm:px-10 py-10 sm:py-12 flex flex-col md:flex-row justify-between items-center gap-6 ">
         {/* Left Section */}
         <div className="text-center md:text-left max-w-lg">
           <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-3">

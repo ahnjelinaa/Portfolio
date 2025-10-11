@@ -1,6 +1,7 @@
 // AboutOverview.jsx
 import React, { useState, useEffect } from 'react';
-import Experience from './experience'; // <-- Pastikan path ini benar
+import Experience from './experience'; 
+import { Link } from 'react-router-dom';
 
 // --- DATA ICONS LENGKAP UNTUK SCROLLER ---
 const scrollerIcons = [

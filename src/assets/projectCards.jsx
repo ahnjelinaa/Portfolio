@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Github, ExternalLink } from 'lucide-react'; 
+import { Link } from 'react-router-dom'; 
+import Projects from '../pages/projects';
 
 // ===================================================
 // DATA PROYEK
@@ -48,7 +50,7 @@ const projects = [
     title: "SIS Automailer",
     description: "Automailer website for BINUS School of Information Systems internal use",
     longDescription : "SIS OTOMAIL is a web-based platform (automailer) that streamlines bulk email sending with personalized content and attachments. Designed for internal use by the School of Information Systems staff, including lab assistants, lecturers, and administrators, it provides a reliable solution after previous attempts failed.",
-    tech: ["Figma", "React 18", "Tailwind CSS", "Vite", "Firebase", "Cloudinary"],
+    tech: ["React", "TypeScript", "Tailwind CSS", "Go", "Cloudflare", "PostgreSQL", "MySQL", "Redis"],
     contributors: [" "],
     image: "/assets/projects/Automailer1.png",
     galleryImages: [
@@ -228,18 +230,14 @@ const ProjectCards = () => {
             <div
               key={project.id}
               onClick={() => handleCardClick(project)}
-              className="group flex flex-col items-center text-center p-4 sm:p-6 transition-all duration-300 transform hover:scale-[1.03] cursor-pointer"
+              className= "group flex flex-col items-center text-center p-4 sm:p-6 transition-all duration-300 transform hover:scale-[1.03] cursor-pointer border border-gray-200 rounded-xl shadow-sm hover:shadow-md bg-white"
             >
               <h3 className="text-xl sm:text-2xl font-bold text-gray-800 group-hover:text-pink-500">
                 {project.title}
               </h3>
-
-              {/* Description */}
               <div className="min-h-[36px] sm:min-h-[40px] mt-2 mb-4 sm:mb-6 flex items-center">
                 <p className="text-xs sm:text-sm text-gray-600">{project.description}</p>
               </div>
-
-              {/* Image */}
               <div className="relative w-full h-auto p-3 sm:p-4 bg-white rounded-xl shadow-xl border border-gray-100">
                 <img
                   src={project.image}
@@ -250,6 +248,18 @@ const ProjectCards = () => {
             </div>
           ))}
         </div>
+
+        {/* === TOMBOL DITAMBAHKAN DI SINI === */}
+        {/* <div className="text-center mt-16">
+          <Link 
+            to="/projects" // <-- Ganti "/projects" dengan link halaman tujuanmu
+            className="flex items-center justify-center px-4 sm:px-6 py-2 border border-pink-400 rounded-full text-sm sm:text-base text-pink-600 font-medium hover:bg-pink-50 transition-colors"
+          >
+            View Other Projects
+          </Link>
+        </div> */}
+        {/* ==================================== */}
+
       </div>
 
       <AnimatePresence>
