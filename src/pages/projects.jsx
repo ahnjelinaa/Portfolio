@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"; // 👈 Import useState dan useEffect
 import { Link } from "react-router-dom";
-import { ProjectsContainerScroll } from "../assets/containerScrollDemo";
+// import { ProjectsContainerScroll } from "../assets/ContainerScrollDemo";
 
 const Projects = () => {
   // State untuk mengontrol visibilitas konten
