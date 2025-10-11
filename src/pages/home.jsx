@@ -41,7 +41,7 @@ const Portfolio = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <a
-                  href="/src/assets/cv/CV_AngelinaOktavianiPutri.pdf"
+                  href="/cv/CV_AngelinaOktavianiPutri.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-gradient-to-r from-[#ffd1dc] to-pink-300 text-white px-5 sm:px-7 lg:px-8 py-2.5 sm:py-3 lg:py-4 rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all duration-200 flex items-center justify-center gap-2 text-sm sm:text-base lg:text-lg"
